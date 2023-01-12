@@ -77,14 +77,13 @@ for x in sp:
         cursor.execute('''INSERT INTO task2_num(col1) VALUES(?)''', (x,))
 
 cursor.execute('''DELETE FROM task2_num WHERE col1>10 ''')
-cursor.execute('''SELECT * FROM task2_text''')
+cursor.execute('''SELECT * FROM task2_text WHERE col1 LIKE '%_____%' ''')
 a = cursor.fetchall()
-for i in range(len(a)):
-    if len(a[i][1]) > 4:
-        cursor.execute('''UPDATE task2_text SET col1='Overone' WHERE id=?''', (i+1,))
+for i in a:
+    cursor.execute('''UPDATE task2_text SET col1='Overone' WHERE id=?''', (i[0],))
 
 
-#Task 3
+# Task 3
 # Заполнить таблицу БД названиями песен с указанием их длительности
 # (то есть колонка с названием и колонка со временем в секундах)
 # Из этой таблицы собрать все записи, с длительностью больше 60 секунд
