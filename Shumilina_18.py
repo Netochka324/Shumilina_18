@@ -77,7 +77,7 @@ for x in sp:
         cursor.execute('''INSERT INTO task2_num(col1) VALUES(?)''', (x,))
 
 cursor.execute('''DELETE FROM task2_num WHERE col1>10 ''')
-cursor.execute('''SELECT * FROM task2_text WHERE col1 LIKE '%_____%' ''')
+cursor.execute('''SELECT * FROM task2_text WHERE col1 LIKE '%_____' ''')
 a = cursor.fetchall()
 for i in a:
     cursor.execute('''UPDATE task2_text SET col1='Overone' WHERE id=?''', (i[0],))
